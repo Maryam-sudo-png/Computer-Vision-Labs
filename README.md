@@ -9,6 +9,7 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 | Lab | Topic | Status |
 |---|---|---|
 | [Lab1](./Lab1) | Transfer Learning Models, Classifier & Computational Efficiency Comparison | ✅ Done |
+| [Lab2](./Lab2) | Effect of Image Filtering on Skin-Lesion Classification | ✅ Done |
 
 ## 🔍 Lab 1 — Transfer Learning & Classifier Comparison
 
@@ -17,6 +18,15 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 - **Computational efficiency:** Parameters, Model Size, FLOPs, Inference Time, Accuracy — compared across all models
 
 📄 Notebook: [`Lab1/Computer_Vision_Lab_Task_1.ipynb`](./Lab1/Computer_Vision_Lab_Task_1.ipynb)
+
+## 🔍 Lab 2 — Effect of Image Filtering on Skin-Lesion Classification
+
+- **Dataset:** HAM10000 skin-lesion images
+- **Models used (top-3 from Lab 1):** VGG16, EfficientNet-B0, ResNet50
+- **Filters applied:** Average/Mean, Gaussian, Median, Sharpening, Sobel edge — plus unfiltered baseline
+- **Comparison:** 18 (model × filter) runs evaluated on Macro-F1, Balanced Accuracy, AUC, confusion matrices
+
+📄 Notebook: [`Lab2/Lab_Task_02.ipynb`](./Lab2/Lab_Task_02.ipynb)
 
 ## 🛠️ Tools & Libraries
 
