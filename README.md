@@ -11,6 +11,7 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 | [Lab1](Lab1) | Transfer Learning Models, Classifier & Computational Efficiency Comparison | ✅ Done |
 | [Lab2](Lab2) | Effect of Image Filtering on Skin-Lesion Classification | ✅ Done |
 | [Lab3](Lab3) | Edge Detection Techniques and Their Impact on Classification Performance | ✅ Done |
+| [Lab4](Lab4) | Skin Lesion Boundary Detection Using Canny Edge Detection | ✅ Done |
 
 ## 🔍 Lab 1 — Transfer Learning & Classifier Comparison
 
@@ -40,11 +41,23 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 
 📄 Notebook: `Lab3/Lab_3_computer_vision.ipynb`
 
+## 🔍 Lab 4 — Skin Lesion Boundary Detection Using Canny Edge Detection
+
+- Dataset: HAM10000 (5 images selected automatically)
+- Pipeline: Original → Grayscale → Gaussian filter (5×5, σ = 1.4) → Canny → Lesion boundary
+- Canny threshold settings compared: 50–100, 100–200, 150–250 (50–100 selected as the best of the three)
+- Boundary extraction: morphological closing, external contours, largest contour kept as the lesion, with Area and Perimeter calculated
+- Final comparison: 8 methods (Original / Average / Gaussian / Median × Sobel / Canny) scored on Noise, Edge Quality (continuity), and Boundary Detection (Dice vs. an Otsu reference mask)
+- Key finding: Sobel with smoothing worked best (Average + Sobel scored highest, Dice ≈ 0.69), while Canny with the tested thresholds detected only partial boundaries because HAM10000 lesion borders are soft and low-contrast — lower thresholds, hair removal, and better post-processing are suggested as improvements
+
+📄 Notebook: `Lab4/CV_Lab_4.ipynb`
+📝 Answers & report: `Lab4/Lab_Assignment_Answers.md`
+
 ## 🛠️ Tools & Libraries
 
 - Python, PyTorch / TorchVision
 - scikit-learn, XGBoost
-- OpenCV, SciPy
+- OpenCV, NumPy, Pandas, Matplotlib, SciPy
 - TensorFlow / Keras
 - Google Colab
 
