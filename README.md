@@ -12,6 +12,7 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 | [Lab2](Lab2) | Effect of Image Filtering on Skin-Lesion Classification | ✅ Done |
 | [Lab3](Lab3) | Edge Detection Techniques and Their Impact on Classification Performance | ✅ Done |
 | [Lab4](Lab4) | Skin Lesion Boundary Detection Using Canny Edge Detection | ✅ Done |
+| [Lab6](Lab6) | Landmark Recognition using SIFT (Feature Matching + Homography/RANSAC) | ✅ Done |
 
 ## 🔍 Lab 1 — Transfer Learning & Classifier Comparison
 
@@ -53,13 +54,26 @@ Each lab lives in its own folder and gets added here as the semester progresses.
 📄 Notebook: `Lab4/CV_Lab_4.ipynb`
 📝 Answers & report: `Lab4/Lab_Assignment_Answers.md`
 
+## 🔍 Lab 6 — Landmark Recognition using SIFT
+
+- Dataset: custom landmark database on Google Drive — 5 landmark sub-folders (4–5 images each), folder name = landmark label
+- Hold-out evaluation: the last image of each landmark is removed from the database and used as an unseen test query
+- Pipeline: SIFT keypoints & 128-D descriptors → BFMatcher (k = 2, L2) + Lowe's ratio test (0.75) → threshold-based decision → homography + RANSAC localization → evaluation
+- Decision rule: a landmark is accepted only if all three checks pass — enough good matches (≥ 25), best candidate beats the runner-up by a margin (× 1.3), and RANSAC geometry is valid (≥ 12 inliers, convex polygon); otherwise the query is rejected as `unknown`
+- Localization: reference image corners projected onto the query with `perspectiveTransform` to draw the landmark's bounding polygon
+- Robustness tests: Original, Rotated (30°), Resized (50%), Reduced brightness, Different viewpoint (hold-out photo), and Unknown landmark
+- Outputs: ranking per landmark, keypoint/match/localization visualizations, performance table, and hold-out accuracy CSV
+- Limitations discussed: slow brute-force matching on large databases, planar-homography assumption on 3D landmarks, repeating textures causing ambiguous matches, and hand-tuned thresholds — improvements suggested include FLANN, RootSIFT, and deep features (SuperPoint + LightGlue)
+
+📄 Notebook: `Lab6/Lab6.ipynb`
+
 ## 🛠️ Tools & Libraries
 
 - Python, PyTorch / TorchVision
 - scikit-learn, XGBoost
-- OpenCV, NumPy, Pandas, Matplotlib, SciPy
+- OpenCV (SIFT, BFMatcher, RANSAC), NumPy, Pandas, Matplotlib, SciPy
 - TensorFlow / Keras
-- Google Colab
+- Google Colab, Google Drive
 
 ## 👤 Author
 
